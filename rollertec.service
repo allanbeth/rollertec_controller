@@ -1,0 +1,13 @@
+[Unit]
+Description=Rollertech Service
+After=network.target
+
+[Service]
+Type=simple
+User=rollertec
+WorkingDirectory=/home/rollertec/Rollertec/
+ExecStart=/srv/rollertech/bin/python3 /home/rollertec/Rollertec/main.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

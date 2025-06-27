@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rollertec Garage Door Controller</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="nav-icons">
+        <a href="#" id="show-buttons-link" title="Main Controls"><i class="fas fa-warehouse"></i></a>
+        <a href="#" id="show-log-link" title="View Log"><i class="fas fa-file-alt"></i></a>
+        <a href="#" id="show-config-link" title="Configuration"><i class="fas fa-cogs"></i></a>
+        <a href="#" id="show-about-link" title="About"><i class="fas fa-question"></i></a>
+    </div>
+
+    <div id="control-container" class="container">
+        <div class="control-card" id="control-card" data-stop-btn="{{ config_data.stop_btn }}">
+            <h2>Main Controls</h2>
+            <div class="button-group">
+                <button id="open-btn"><i class="fas fa-arrow-up"></i> Open</button>
+                <button id="stop-btn"><i class="fas fa-stop"></i> Stop</button>
+                <button id="close-btn"><i class="fas fa-arrow-down"></i> Close</button>
+            </div>
+            <div id="status" class="mt-4 text-secondary"></div>
+        </div>
+    </div>
+
+    <div id="log-container" class="container" style="display:none;">
+        <div class="log-card" id="log-card">
+            <div class="container-header">
+                <span><i class="fas fa-file-alt"></i> Log File</span>
+                 <button class="refresh-log-btn" id="refresh-log-btn" title="Refresh Log">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+            </div>
+            <div class="log-content" id="log-content">
+                Loading logs...
+            </div>
+        </div>
+    </div>
+
+    <div id="config-container" class="container" style="display:none;">
+        <div class="config-card" id="config-card"> 
+            <div class="container-header">
+                <span><i class="fas fa-cogs"></i> Configuration</span>
+                <button class="save-config-btn" id="save-config-btn" title="Save Config">
+                <i class="fas fa-save"></i>
+            </button>
+            </div>
+            <form id="config-form">
+    <div class="config-row">
+        <label for="max_log">Max Log Size (MB)</label>
+        <input type="number" id="max_log" name="max_log" value="{{ config_data.max_log }}">
+    </div>
+    <div class="config-row">
+        <label for="open_pin">Open GPIO Pin</label>
+        <input type="number" id="open_pin" name="open_pin" value="{{ config_data.open_pin }}">
+    </div>
+    <div class="config-row">
+        <label for="close_pin">Close GPIO Pin</label>
+        <input type="number" id="close_pin" name="close_pin" value="{{ config_data.close_pin }}">
+    </div>
+    <div class="config-row">
+        <label for="stop_pin">Stop GPIO Pin</label>
+        <input type="number" id="stop_pin" name="stop_pin" value="{{ config_data.stop_pin }}">
+    </div>
+    <div class="config-row">
+        <label for="roller_time">Roller Time (s)</label>
+        <input type="number" id="roller_time" name="roller_time" value="{{ config_data.roller_time }}">
+    </div>
+    <div class="config-row">
+        <label for="press_time">Button Press Time (s)</label>
+        <input type="number" id="press_time" name="press_time" value="{{ config_data.press_time }}">
+    </div>
+    <div class="config-row">
+        <label for="stop_btn">Enable Stop Button</label>
+        <input type="checkbox" id="stop_btn" name="stop_btn" value="1" {% if config_data.stop_btn == 1 %}checked{% endif %}>
+    </div>
+    <div class="config-row">
+        <label for="mqtt_broker">MQTT Broker Address</label>
+        <input type="text" id="mqtt_broker" name="mqtt_broker" value="{{ config_data.mqtt_broker }}">
+    </div>
+    <div class="config-row">
+        <label for="mqtt_port">MQTT Broker Port</label>
+        <input type="number" id="mqtt_port" name="mqtt_port" value="{{ config_data.mqtt_port }}">
+    </div>
+    <div class="config-row">
+        <label for="webserver_host">Webserver Host</label>
+        <input type="text" id="webserver_host" name="webserver_host" value="{{ config_data.webserver_host }}">
+    </div>
+    <div class="config-row">
+        <label for="webserver_port">Webserver Port</label>
+        <input type="number" id="webserver_port" name="webserver_port" value="{{ config_data.webserver_port }}">
+    </div>
+    <div class="config-row">
+        <label for="remote_gpio">Enable Remote GPIO</label>
+        <input type="checkbox" id="remote_gpio" name="remote_gpio" value="1" {% if config_data.remote_gpio == 1 %}checked{% endif %}>
+    </div>
+    <div class="config-row">
+        <label for="gpio_address">Remote GPIO Address</label>
+        <input type="text" id="gpio_address" name="gpio_address" value="{{ config_data.gpio_address }}">
+    </div>
+    <span id="config-save-status"></span>
+            </form>
+        </div>
+    </div>
+    <div id="about-container" class="container" style="display:none;">
+        <div class="about-card" id="about-card">
+            <div class="container-header">
+                <span><i class="fas fa-question"></i> About</span>
+            </div>
+            <div class="about-content" id="about-content">
+                
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
