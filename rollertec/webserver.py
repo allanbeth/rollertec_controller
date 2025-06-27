@@ -30,6 +30,7 @@ class flaskWrapper:
         self.app.route("/about", methods=["GET"])(self.get_readme)
 
     def main(self):
+        self.logger.info(f"index.html loaded successfully")
         return render_template("index.html", config_data=self.config_manager.config_data)
     
     def on_press(self, key):
