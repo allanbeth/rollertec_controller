@@ -1,3 +1,4 @@
 RPi.GPIO
 Flask
 paho-mqtt
+pigpio
