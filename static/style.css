@@ -37,11 +37,11 @@ body {
 
 .nav-icons a:hover,
 .nav-icons a:active {
-    color: #707070;
+    color: #c2c2c2;
 }
 
 .nav-icons a.active {
-    color: #707070;
+    color: #c2c2c2;
 }
 
 /* ========== Main Containers ========== */
@@ -131,7 +131,7 @@ body {
 
 .button-group button:active,
 .save-btn:active {
-    background: #707070;
+    background: #c2c2c2;
     color: #fff;
 }
 
@@ -210,7 +210,7 @@ body {
     max-width: 25%;
     min-width: 30px;
     height: 28px;
-    accent-color: #707070;
+    accent-color: #c2c2c2;
     margin-left: auto;
     margin-right: 0;
     transform: scale(1.4);
@@ -250,7 +250,7 @@ body {
 #config-save-status {
     margin-left: 0;
     font-weight: bold;
-    color: #707070;
+    color: #c2c2c2;
     font-size: 1em;
     display: block;
     margin-top: 10px;

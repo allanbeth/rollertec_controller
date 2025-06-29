@@ -1,11 +1,11 @@
 # main.py
 
-from rollertec.config_manager import configManager
-from rollertec.rollertec_manager import rollertecManager
+from rollertec.config_manager import ConfigManager
+from rollertec.rollertec_manager import RollertecManager
 
 
-config = configManager()
-manager = rollertecManager(config)
+config = ConfigManager()
+manager = RollertecManager(config)
 
        
 if __name__ == "__main__":    

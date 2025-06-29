@@ -63,7 +63,7 @@ function fetchLog() {
             const LOG_ENTRY_REGEX = /^\s*([\d\-:, ]+)\s+([A-Z]+)\s+(.*)$/;
 
             const logFileHTML = logEntries.map(entry => {
-                const logText = entry.logs.trim();
+                const logText = entry.trim();
                 const match = logText.match(LOG_ENTRY_REGEX);
 
                 if (match) {
